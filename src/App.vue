@@ -1,6 +1,7 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p ref="showData">{{ showData }}</p>
+  <HelloWorld @helloText="handleData" msg="Welcome to Your Vue.js App"/>
+
 </template>
 
 <script>
@@ -10,11 +11,27 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  data() {
+    return {
+      showData: ""
+    }
+  },
+  mounted() {
+    this.$refs.showData.classList.add("red")
+  },
+  methods: {  
+    handleData(payload) {
+      this.showData = payload;
+    }
   }
 }
 </script>
 
 <style>
+.red {
+  color: red;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
